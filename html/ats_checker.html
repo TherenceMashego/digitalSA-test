@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Resume Checker | Digital SA</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%232563eb'/><path d='M30 30L70 30 85 50 70 70 30 70 15 50z' fill='none' stroke='white' stroke-width='5'/><path d='M30 30L50 15 70 30M70 30L85 50 70 70M70 70L50 85 30 70M30 70L15 50 30 30' fill='none' stroke='white' stroke-width='3'/></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/ats_checker_styling.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">
+                <img src="../img/logo.png" alt="Digital SA Logo" width="50" height="50">
+                <span>Digital SA</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="https://digital-sa.github.io/support/#home">Home</a>
+                <a href="https://digital-sa.github.io/support/#services">Services</a>
+                <a href="https://digital-sa.github.io/support/#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="container">
+        <h1 class="fade-in">ATS Resume Checker</h1>
+        <p class="fade-in delay-1">Optimize your resume for Applicant Tracking Systems with our advanced role-specific
+            analysis tool.</p>
+        <div class="fade-in delay-2">
+            <a href="#analyze" class="btn">Start Analysis</a>
+        </div>
+    </div>
+</section>
+
+<main class="main-content" id="analyze">
+    <div class="container">
+        <!-- Step Navigation -->
+        <div class="step-nav">
+            <div class="step active" id="step-1">
+                <div class="step-number">1</div>
+                <div class="step-label">Select Role</div>
+                <div class="step-connector"></div>
+            </div>
+            <div class="step" id="step-2">
+                <div class="step-number">2</div>
+                <div class="step-label">Upload Resume</div>
+                <div class="step-connector"></div>
+            </div>
+            <div class="step" id="step-3">
+                <div class="step-number">3</div>
+                <div class="step-label">Get Results</div>
+            </div>
+        </div>
+
+        <!-- Step 1: Role Selection -->
+        <div class="card fade-in" id="role-selection">
+            <h2>Select Your Target Role</h2>
+            <p>Choose the department and specific role you're applying for to get tailored analysis.</p>
+
+            <form id="role-form">
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department" class="form-control" required>
+                        <option value="" selected disabled>Select a department</option>
+                        <option value="engineering">Engineering/IT</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="sales">Sales</option>
+                        <option value="finance">Finance</option>
+                        <option value="hr">Human Resources</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="education">Education</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" class="form-control" disabled required>
+                        <option value="" selected disabled>First select a department</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="display: flex; justify-content: flex-end; gap: 1rem;">
+                    <button type="button" class="btn-secondary" id="role-back-btn" style="display: none;">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button type="button" class="btn-primary" id="role-next-btn" disabled>
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 2: Resume Upload -->
+        <div class="card fade-in" id="resume-upload" style="display: none;">
+            <h2>Upload Your Resume</h2>
+            <p>Upload your resume document or paste the text below for analysis.</p>
+
+            <div class="upload-area" id="upload-area">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Drag & drop your resume file here or click to browse</p>
+                <p><small>Supported formats: PDF, DOCX</small></p>
+                <input type="file" id="resume-file" style="display: none;" accept=".pdf,.docx">
+            </div>
+
+            <div id="file-info" style="display: none;">
+                <div class="file-info">
+                    <i class="fas fa-file-alt"></i>
+                    <div class="file-name" id="file-name">filename.pdf</div>
+                    <button class="remove-file" id="remove-file">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="resume-text">Or paste your resume text here:</label>
+                <textarea id="resume-text" class="form-control" placeholder="Paste your resume text here..."></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+                <button type="button" class="btn-secondary" id="resume-back-btn">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button type="button" class="btn-primary" id="analyze-btn" disabled>
+                    Analyze Resume <i class="fas fa-chart-line"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="card fade-in" id="loading-state" style="display: none;">
+            <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <h3>Analyzing Your Resume</h3>
+                <p class="loading-tip">Did you know? Most ATS systems reject up to 75% of resumes before a human ever
+                    sees them.</p>
+                <p>Please wait while we analyze your document...</p>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="fade-in" id="results-section" style="display: none;">
+            <div class="results-header">
+                <h2>Analysis Results</h2>
+                <p>Here's how your resume performs for your selected role.</p>
+            </div>
+
+            <!-- Women's Month Banner  -->
+            <div class="women-month-banner">
+                <i class="fas fa-venus"></i>
+                <p><strong>Women's Month Special:</strong> Celebrate with us! Get 50% off all our CV revamp services
+                    until the end of August. Let us help you build a powerful personal brand that stands out.</p>
+            </div>
+
+            <div class="results-overview">
+                <div class="overall-score">
+                    <div class="score-value" id="overall-score">0</div>
+                    <div class="score-label">Overall ATS Score</div>
+                    <div class="score-description" id="score-description">Your resume is being analyzed for ATS
+                        compatibility.
+                    </div>
+
+                    <div class="gauge-container">
+                        <div class="gauge">
+                            <div class="gauge-fill" id="overall-gauge"></div>
+                        </div>
+                        <div class="gauge-labels">
+                            <span class="gauge-label">Poor</span>
+                            <span class="gauge-label">Fair</span>
+                            <span class="gauge-label">Good</span>
+                            <span class="gauge-label">Excellent</span>
+                        </div>
+                    </div>
+
+                    <div class="score-meta">
+                        <div class="meta-item">
+                            <div class="meta-value" id="keyword-match">0%</div>
+                            <div class="meta-label">Keyword Match</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" id="word-count">0</div>
+                            <div class="meta-label">Word Count</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" id="role-relevance">0%</div>
+                            <div class="meta-label">Role Relevance</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="role-info">
+                    <h3>Role Information</h3>
+
+                    <div class="info-item">
+                        <div class="info-label">Selected Department</div>
+                        <div class="info-value" id="selected-dept">-</div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">Selected Role</div>
+                        <div class="info-value" id="selected-role">-</div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">Recommended Length</div>
+                        <div class="info-value" id="recommended-length">400-600 words</div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-label">Analysis Date</div>
+                        <div class="info-value" id="analysis-date">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Optimization -->
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h3>Keyword Optimization</h3>
+                    <div class="section-score score-high" id="keyword-score">0/100</div>
+                </div>
+
+                <div class="gauge-container">
+                    <div class="gauge">
+                        <div class="gauge-fill" id="keyword-gauge"></div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="strengths">
+                        <h4><i class="fas fa-check-circle"></i> Strengths</h4>
+                        <ul id="keyword-strengths">
+                            <li>Analyzing keyword usage...</li>
+                            <li>Checking for role-specific terms...</li>
+                        </ul>
+                    </div>
+
+                    <div class="improvements">
+                        <h4><i class="fas fa-exclamation-circle"></i> Areas for Improvement</h4>
+                        <ul id="keyword-improvements">
+                            <li>Identifying missing keywords...</li>
+                            <li>Suggesting better phrasing...</li>
+                        </ul>
+                    </div>
+
+                    <div class="keywords-container">
+                        <div class="keywords-header">
+                            <div class="keywords-title">Key Role-Specific Keywords</div>
+                            <div class="keywords-count"><span id="keywords-found-count">0</span> found of <span
+                                    id="keywords-total-count">0</span></div>
+                        </div>
+
+                        <div class="keywords-grid" id="keywords-list">
+                            <!-- Keywords will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formatting Analysis -->
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h3>Formatting Analysis</h3>
+                    <div class="section-score score-medium" id="formatting-score">0/100</div>
+                </div>
+
+                <div class="gauge-container">
+                    <div class="gauge">
+                        <div class="gauge-fill" id="formatting-gauge"></div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="strengths">
+                        <h4><i class="fas fa-check-circle"></i> Strengths</h4>
+                        <ul id="formatting-strengths">
+                            <li>Checking document structure...</li>
+                            <li>Analyzing section organization...</li>
+                        </ul>
+                    </div>
+
+                    <div class="improvements">
+                        <h4><i class="fas fa-exclamation-circle"></i> Areas for Improvement</h4>
+                        <ul id="formatting-improvements">
+                            <li>Looking for ATS-unfriendly elements...</li>
+                            <li>Checking for readability issues...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Quality -->
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h3>Content Quality</h3>
+                    <div class="section-score score-low" id="content-score">0/100</div>
+                </div>
+
+                <div class="gauge-container">
+                    <div class="gauge">
+                        <div class="gauge-fill" id="content-gauge"></div>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="strengths">
+                        <h4><i class="fas fa-check-circle"></i> Strengths</h4>
+                        <ul id="content-strengths">
+                            <li>Evaluating achievement statements...</li>
+                            <li>Checking for quantifiable results...</li>
+                        </ul>
+                    </div>
+
+                    <div class="improvements">
+                        <h4><i class="fas fa-exclamation-circle"></i> Areas for Improvement</h4>
+                        <ul id="content-improvements">
+                            <li>Looking for weak action verbs...</li>
+                            <li>Identifying vague descriptions...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Promotion -->
+            <div class="service-promo">
+                <h3>Need Professional Help With Your Resume?</h3>
+                <p>Our expert team can help you transform your resume into a powerful career tool that gets noticed by
+                    employers and ATS systems alike.</p>
+
+                <div class="service-features">
+                    <div class="service-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>ATS Optimization</h4>
+                            <p>We'll ensure your resume passes through applicant tracking systems</p>
+                        </div>
+                    </div>
+                    <div class="service-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Professional Rewriting</h4>
+                            <p>Our writers will craft compelling, achievement-focused content</p>
+                        </div>
+                    </div>
+                    <div class="service-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Personal Branding</h4>
+                            <p>We'll help you develop a consistent professional brand</p>
+                        </div>
+                    </div>
+                    <div class="service-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>LinkedIn Profile</h4>
+                            <p>Get a matching LinkedIn profile that complements your resume</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button type="button" class="btn-primary"
+                            onclick="window.location.href='https://wa.me/+27685753002'">
+                        <i class="fab fa-whatsapp"></i>
+                        <span style="margin-left: 8px;">Chat with Us</span>
+                    </button>
+                    <button type="button" class="btn-secondary"
+                            onclick="window.location.href='mailto:digitalsadesk@gmail.com'">
+                        <i class="fas fa-envelope"></i>
+                        <span style="margin-left: 8px;">Email Us</span>
+                    </button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+                    <button type="button" class="btn-secondary" id="start-over-btn">
+                        <i class="fas fa-redo"></i>
+                        <span style="margin-left: 8px;">Start Over</span>
+                    </button>
+                    <button type="button" class="btn-primary" id="print-results-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        <span style="margin-left: 8px;">Print as PDF</span>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+</main>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <!-- First Column - About -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Digital SA</h3>
+                </div>
+                <p>Your comprehensive digital partner for career, technology, and business solutions in
+                    Johannesburg.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61577171795135&mibextid=ZbWKwL" target="_blank"
+                       aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/company/digital-sa" target="_blank" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/digital_sa_desk1?igsh=ZGUzMzM3NWJiOQ==" target="_blank"
+                       aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/+27685753002" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@digital_sa5?_t=ZM-8xdUIkP6NAT&_r=1" target="_blank"
+                       aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Second Column - Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-menu">
+                    <li><a href="https://digital-sa.github.io/support/#home"><i class="fas fa-chevron-right"></i>
+                        Home</a></li>
+                    <li><a href="https://digital-sa.github.io/support/#services"><i class="fas fa-chevron-right"></i>
+                        Services</a></li>
+                    <li><a href="https://digital-sa.github.io/support/#about"><i class="fas fa-chevron-right"></i> About</a>
+                    </li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Third Column - Services -->
+            <div class="footer-column">
+                <h3>Our Services</h3>
+                <ul class="footer-menu">
+                    <li><a href="https://digital-sa.github.io/support/#services"><i class="fas fa-chevron-right"></i>
+                        Career Branding</a></li>
+                    <li><a href="https://digital-sa.github.io/support/#services"><i class="fas fa-chevron-right"></i>
+                        Web Development</a></li>
+                    <li><a href="https://digital-sa.github.io/support/#services"><i class="fas fa-chevron-right"></i>
+                        Business Branding</a></li>
+                    <li><a href="https://digital-sa.github.io/support/#services"><i class="fas fa-chevron-right"></i> IT
+                        Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Fourth Column - Contact -->
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 471 Hole in one, Rumsig, Roodepoort</li>
+                    <li><i class="fas fa-phone"></i> +27 82 969 9191</li>
+                    <li><i class="fas fa-envelope"></i> digitalsadesk@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Digital SA. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="../js/ats_checker_script.js"></script>
+</body>
+</html>
