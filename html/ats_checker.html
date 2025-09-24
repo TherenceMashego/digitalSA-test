@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="../css/ats_checker_styling.css">
 </head>
 <body>
-<header>
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
+<div class="cursor-trail"></div>
+
+<header id="header">
     <div class="container">
         <nav>
             <a href="#" class="logo">
@@ -33,6 +37,8 @@
 </header>
 
 <section class="hero" id="home">
+    <div class="particles-container" id="particles-js"></div>
+    <div class="wave-animation"></div>
     <div class="container">
         <h1 class="fade-in">ATS Resume Checker</h1>
         <p class="fade-in delay-1">Optimize your resume for Applicant Tracking Systems with our advanced role-specific
@@ -146,6 +152,12 @@
                 <p class="loading-tip">Did you know? Most ATS systems reject up to 75% of resumes before a human ever
                     sees them.</p>
                 <p>Please wait while we analyze your document...</p>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">Processing...</div>
+                </div>
             </div>
         </div>
 
@@ -392,11 +404,10 @@
                         <i class="fas fa-file-pdf"></i>
                         <span style="margin-left: 8px;">Print as PDF</span>
                     </button>
-
                 </div>
-
             </div>
         </div>
+    </div>
 </main>
 
 <footer id="contact">
@@ -470,6 +481,8 @@
         </div>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="../js/ats_checker_script.js"></script>
 </body>
 </html>

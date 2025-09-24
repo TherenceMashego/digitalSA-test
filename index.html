@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header>
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
+<div class="cursor-trail"></div>
+
+<header id="header">
     <div class="container">
         <nav>
             <a href="#" class="logo">
@@ -35,6 +39,8 @@
 </header>
 
 <section class="hero" id="home">
+    <div class="particles-container" id="particles-js"></div>
+    <div class="wave-animation"></div>
     <div class="container">
         <h1 class="fade-in">Elevate Your Career. Define Your Brand. Optimize Your Tech</h1>
         <p class="fade-in delay-1">Comprehensive digital solutions to help you succeed professionally, establish your
@@ -42,6 +48,29 @@
         <div class="hero-buttons fade-in delay-2">
             <a href="#services" class="btn">Our Services</a>
             <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-count="500">0</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-label">Client Satisfaction (%)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="15">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="24">0</div>
+                <div class="stat-label">Support Available (hrs)</div>
+            </div>
         </div>
     </div>
 </section>
@@ -271,6 +300,8 @@
         </div>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="js/home_page_script.js"></script>
 </body>
 </html>

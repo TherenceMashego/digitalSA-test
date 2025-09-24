@@ -13,6 +13,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -29,13 +34,58 @@ body {
     padding: 0 20px;
 }
 
+/* Cursor Effects */
+.cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary);
+    transition: all 0.2s ease-out;
+}
+
+.cursor-trail {
+    position: fixed;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
 /* Header & Navigation */
 header {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 nav {
@@ -53,6 +103,11 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .logo i {
@@ -124,7 +179,7 @@ nav {
 
 .hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -139,6 +194,38 @@ nav {
     margin: 0 auto 2rem;
 }
 
+/* Particles container */
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Wave animation */
+.wave-animation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+    background-size: 1440px 100px;
+    animation: wave 12s linear infinite;
+    z-index: 1;
+}
+
+@keyframes wave {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 1440px;
+    }
+}
+
 .btn {
     display: inline-block;
     background-color: white;
@@ -150,13 +237,31 @@ nav {
     transition: all 0.3s;
     border: 2px solid white;
     margin: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    transition: all 0.3s;
+    z-index: -1;
 }
 
 .btn:hover {
-    background-color: transparent;
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover::before {
+    width: 100%;
 }
 
 .btn-outline {
@@ -164,8 +269,11 @@ nav {
     color: white;
 }
 
+.btn-outline::before {
+    background: white;
+}
+
 .btn-outline:hover {
-    background-color: white;
     color: var(--primary);
 }
 
@@ -175,9 +283,50 @@ nav {
     border-color: #25D366;
 }
 
+.btn-whatsapp::before {
+    background: white;
+}
+
 .btn-whatsapp:hover {
-    background-color: transparent;
     color: #25D366;
+}
+
+/* Stats Section */
+.stats {
+    padding: 4rem 0;
+    background: linear-gradient(to right, #f8fafc, #e2e8f0);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--gray);
+    font-size: 1rem;
 }
 
 /* Services Section */
@@ -234,10 +383,12 @@ nav {
     display: flex;
     flex-direction: column;
     height: 100%;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -247,6 +398,11 @@ nav {
     font-size: 2.5rem;
     padding: 2rem;
     text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1);
 }
 
 .service-content {
@@ -320,6 +476,12 @@ nav {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.5s;
+}
+
+.about-image:hover {
+    transform: perspective(1000px) rotateY(0);
 }
 
 .about-image img {
@@ -353,6 +515,12 @@ nav {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-card::before {
@@ -479,6 +647,7 @@ nav {
 .form-group select:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .form-group textarea {
@@ -607,72 +776,15 @@ footer {
 
 .social-links a:hover {
     background-color: var(--accent);
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .copyright {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #1e293b;
-    color: #64748b;
-    font-size: 0.85rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        padding: 1rem;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-    }
-
-    .about-image {
-        order: -1;
-    }
-
-    .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn {
-        display: block;
-        width: 80%;
-        margin: 0.5rem auto;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .footer-column {
-        margin-bottom: 2rem;
-    }
+    border-top: 1px solid #334155;
+    color: #94a3b8;
 }
 
 /* Animations */
@@ -688,42 +800,154 @@ footer {
 }
 
 .fade-in {
-    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .delay-1 {
-    animation-delay: 0.2s;
+    transition-delay: 0.2s;
 }
 
 .delay-2 {
-    animation-delay: 0.4s;
+    transition-delay: 0.4s;
 }
 
 .delay-3 {
-    animation-delay: 0.6s;
+    transition-delay: 0.6s;
 }
 
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image {
+        order: -1;
+        transform: perspective(1000px) rotateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .service-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+}
+
+/* ATS Highlight */
 .ats-highlight {
-    background-color: #f0f7ff;
-    border: 2px solid #4a90e2;
+    position: relative;
+    overflow: hidden;
 }
 
-.ats-highlight .service-icon {
-    color: #4a90e2;
+.ats-highlight::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+    z-index: 1;
+}
+
+@keyframes shine {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 100%;
+    }
 }
 
 .ats-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #a3c809;
+    background: linear-gradient(45deg, #10b981, #059669);
     color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    border: none;
 }
 
 .ats-button:hover {
-    background-color: #0acabf;
+    background: linear-gradient(45deg, #059669, #047857);
+    color: white;
+}
+
+/* Click ripple effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
 }
