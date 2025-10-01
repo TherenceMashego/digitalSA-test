@@ -257,7 +257,9 @@ function initATSFunctionality() {
 
     // Mobile menu toggle
     elements.mobileMenuBtn.addEventListener('click', function() {
-        elements.navLinks.classList.toggle('active');
+        elements.navLinks.style.display = elements.navLinks.style.display === 'flex' ? 'none' : 'flex';
+        elements.mobileMenuBtn.innerHTML = elements.navLinks.style.display === 'flex' ? 
+            '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
     });
 
     // Smooth scrolling for anchor links
@@ -265,13 +267,24 @@ function initATSFunctionality() {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
 
-            // Close mobile menu if open
-            if (elements.navLinks.classList.contains('active')) {
-                elements.navLinks.classList.remove('active');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.getElementById('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                if (window.innerWidth <= 768 && elements.navLinks.style.display === 'flex') {
+                    elements.navLinks.style.display = 'none';
+                    elements.mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
             }
         });
     });
@@ -409,28 +422,6 @@ function initATSFunctionality() {
 
     function goToStep(step) {
         state.currentStep = step;
-
-        // Update step navigation
-        document.querySelectorAll('.step').forEach((stepEl, index) => {
-            if (index + 1 < step) {
-                stepEl.classList.add('completed');
-                stepEl.classList.remove('active');
-            } else if (index + 1 === step) {
-                stepEl.classList.add('active');
-                stepEl.classList.remove('completed');
-            } else {
-                stepEl.classList.remove('active', 'completed');
-            }
-        });
-
-        // Update step connectors
-        document.querySelectorAll('.step-connector').forEach((connector, index) => {
-            if (index + 1 < step) {
-                connector.classList.add('completed');
-            } else {
-                connector.classList.remove('completed');
-            }
-        });
 
         // Show/hide sections
         elements.roleSelection.style.display = step === 1 ? 'block' : 'none';
@@ -825,10 +816,13 @@ function initParticles() {
 function initCursorEffects() {
     const cursorDot = document.querySelector('[data-cursor-dot]');
     const cursorOutline = document.querySelector('[data-cursor-outline]');
-    const cursorTrail = document.querySelector('.cursor-trail');
     
-    // Only initialize if elements exist
-    if (!cursorDot || !cursorOutline) return;
+    // Only initialize if elements exist and not on touch devices
+    if (!cursorDot || !cursorOutline || ('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+        if (cursorDot) cursorDot.style.display = 'none';
+        if (cursorOutline) cursorOutline.style.display = 'none';
+        return;
+    }
     
     let mouseX = 0, mouseY = 0;
     let outlineX = 0, outlineY = 0;
@@ -855,7 +849,7 @@ function initCursorEffects() {
     });
     
     // Cursor interaction with clickable elements
-    document.querySelectorAll('a, button, .upload-area, .card, .keyword').forEach(el => {
+    document.querySelectorAll('a, button, .upload-area, .service-card, .keyword').forEach(el => {
         el.addEventListener('mouseenter', () => {
             scale = 1.8;
             cursorOutline.style.borderWidth = '1px';
@@ -942,3 +936,39 @@ function initScrollAnimations() {
         observer.observe(element);
     });
 }
+
+// Counter animation for stats
+function initCounterAnimation() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const stat = entry.target;
+                const target = parseInt(stat.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, 16);
+                
+                observer.unobserve(stat);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statNumbers.forEach(stat => {
+        observer.observe(stat);
+    });
+}
+
+// Initialize counter animation
+initCounterAnimation();

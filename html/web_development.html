@@ -7,10 +7,14 @@
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%232563eb'/><path d='M30 30L70 30 85 50 70 70 30 70 15 50z' fill='none' stroke='white' stroke-width='5'/><path d='M30 30L50 15 70 30M70 30L85 50 70 70M70 70L50 85 30 70M30 70L15 50 30 30' fill='none' stroke='white' stroke-width='3'/></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/web_dev_styling.css">
+    <link rel="stylesheet" href="../css/web_development_styling.css">
 </head>
 <body>
-<header>
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
+<div class="cursor-trail"></div>
+
+<header id="header">
     <div class="container">
         <nav>
             <a href="../index.html" class="logo">
@@ -32,85 +36,156 @@
     </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
+    <div class="particles-container" id="particles-js"></div>
+    <div class="wave-animation"></div>
     <div class="container">
         <h1 class="fade-in">Web Development Services</h1>
-        <p class="fade-in delay-1">Professional web development solutions to establish your online presence and grow
-            your business.</p>
-        <div class="fade-in delay-2">
-            <a href="#contact" class="btn">Get Started</a>
-            <a href="../index.html#services" class="btn btn-outline">All Services</a>
+        <p class="fade-in delay-1">Professional web development solutions to establish your online presence and grow your business.</p>
+        <div class="hero-buttons fade-in delay-2">
+            <a href="#services" class="btn">View Services</a>
+            <a href="#contact" class="btn btn-outline">Get Started</a>
         </div>
     </div>
 </section>
 
-<section class="service-detail">
+<section class="stats">
     <div class="container">
-        <div class="service-header">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-count="35">0</div>
+                <div class="stat-label">Websites Developed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-label">Client Satisfaction (%)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="9">0</div>
+                <div class="stat-label">E-commerce Solutions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="48">0</div>
+                <div class="stat-label">Hour Turnaround</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service-detail" id="services">
+    <div class="container">
+        <div class="section-title">
             <h2>Build Your Digital Presence</h2>
-            <p>Our comprehensive web development services are designed to help businesses establish a strong online
-                presence with responsive, user-friendly websites.</p>
+            <p>Our comprehensive web development services are designed to help businesses establish a strong online presence with responsive, user-friendly websites.</p>
         </div>
 
-        <div class="service-content">
-            <div class="service-features">
-                <h3><i class="fas fa-code"></i> Service Features</h3>
-                <ul class="feature-list">
-                    <li>Responsive Website Development: Front-end development for brochures, portfolios, and basic
-                        business sites
-                    </li>
-                    <li>Full-Stack Website Development: Comprehensive development including front-end, back-end, and
-                        database for business sites and e-commerce platforms
-                    </li>
-                    <li>Hosting & Domain Setup: Hassle-free configuration with basic security integration</li>
-                    <li>UX/UI Audit: Expert analysis to improve website navigation, user experience, and conversion
-                        rates
-                    </li>
-                    <li>E-commerce Solutions: Online store development with payment integration</li>
-                    <li>Website Maintenance: Ongoing support and updates for your website</li>
-                </ul>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Static Website Development</h3>
+                    <ul>
+                        <li>Front-end development</li>
+                        <li>Brochure & portfolio sites</li>
+                        <li>Up to 5 pages</li>
+                        <li>Mobile responsive design</li>
+                        <li>Basic contact forms</li>
+                    </ul>
+                    <div class="price-tag">R1,000 - R10,000</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
             </div>
 
-            <div class="pricing">
-                <h3><i class="fas fa-tag"></i> Pricing & Packages</h3>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Static Website Development</div>
-                        <div class="price-description">Basic business site with up to 5 pages</div>
-                    </div>
-                    <div class="price-value">R1,000 - R4,000</div>
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
                 </div>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Full-Stack Development</div>
-                        <div class="price-description">Dynamic website with database and admin panel</div>
-                    </div>
-                    <div class="price-value">R4,999 - R20,000</div>
+                <div class="service-content">
+                    <h3>Full-Stack Development</h3>
+                    <ul>
+                        <li>Front-end & back-end</li>
+                        <li>Database integration</li>
+                        <li>Admin panel</li>
+                        <li>Dynamic content</li>
+                        <li>Custom functionality</li>
+                    </ul>
+                    <div class="price-tag">R4,999 - R20,000</div>
+                    <a href="#contact" class="btn">Get Started</a>
                 </div>
+            </div>
 
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Hosting & Domain Setup</div>
-                        <div class="price-description">Basic hosting with domain configuration</div>
-                    </div>
-                    <div class="price-value">R300</div>
+            <div class="service-card fade-in delay-2">
+                <div class="service-icon">
+                    <i class="fas fa-server"></i>
                 </div>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">UX/UI Audit</div>
-                        <div class="price-description">Comprehensive website analysis and recommendations</div>
-                    </div>
-                    <div class="price-value">Free Consultation</div>
+                <div class="service-content">
+                    <h3>Hosting & Domain Setup</h3>
+                    <ul>
+                        <li>Domain configuration</li>
+                        <li>Basic hosting setup</li>
+                        <li>Security integration</li>
+                        <li>Email setup</li>
+                        <li>SSL certificate</li>
+                    </ul>
+                    <div class="price-tag">R300</div>
+                    <a href="#contact" class="btn">Get Started</a>
                 </div>
+            </div>
 
-                <div class="package">
-                    <h4><i class="fas fa-gift"></i> Complete Web Package</h4>
-                    <p>Static website development + hosting & domain setup + basic SEO</p>
-                    <div class="package-price">From R4,500</div>
-                    <a href="#contact" class="btn btn-outline">Get Package</a>
+            <div class="service-card fade-in delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="service-content">
+                    <h3>UX/UI Audit</h3>
+                    <ul>
+                        <li>Navigation analysis</li>
+                        <li>User experience review</li>
+                        <li>Conversion optimization</li>
+                        <li>Design recommendations</li>
+                        <li>Performance assessment</li>
+                    </ul>
+                    <div class="price-tag">Free Consultation</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="service-content">
+                    <h3>E-commerce Solutions</h3>
+                    <ul>
+                        <li>Online store development</li>
+                        <li>Payment integration</li>
+                        <li>Product catalog</li>
+                        <li>Shopping cart</li>
+                        <li>Inventory management</li>
+                    </ul>
+                    <div class="price-tag">R5,000 - R25,000</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Complete Web Package</h3>
+                    <ul>
+                        <li>Static website development</li>
+                        <li>Hosting & domain setup</li>
+                        <li>Basic SEO optimization</li>
+                        <li>Contact form integration</li>
+                        <li>1-month support</li>
+                    </ul>
+                    <div class="price-tag">From R4,500</div>
+                    <div class="savings">Save R800</div>
+                    <a href="#contact" class="btn">Get Package</a>
                 </div>
             </div>
         </div>
@@ -119,33 +194,44 @@
 
 <section class="process">
     <div class="container">
-        <div class="process-header">
+        <div class="section-title">
             <h2>Our Web Development Process</h2>
-            <p>We follow a structured approach to ensure your website meets your business goals and delivers
-                results.</p>
+            <p>We follow a structured approach to ensure your website meets your business goals and delivers results.</p>
         </div>
-
+        
         <div class="process-steps">
             <div class="process-step fade-in">
-                <i class="fas fa-comments"></i>
+                <div class="step-number">1</div>
+                <div class="step-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
                 <h3>Consultation</h3>
                 <p>We begin by understanding your business needs, target audience, and goals.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-1">
-                <i class="fas fa-pencil-ruler"></i>
+                <div class="step-number">2</div>
+                <div class="step-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
                 <h3>Planning</h3>
                 <p>We create a detailed project plan with timelines, deliverables, and design mockups.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-2">
-                <i class="fas fa-code"></i>
+                <div class="step-number">3</div>
+                <div class="step-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
                 <h3>Development</h3>
                 <p>Our developers build your website using the latest technologies and best practices.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-3">
-                <i class="fas fa-rocket"></i>
+                <div class="step-number">4</div>
+                <div class="step-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
                 <h3>Launch</h3>
                 <p>We deploy your website and ensure everything is working perfectly before going live.</p>
             </div>
@@ -155,35 +241,41 @@
 
 <section class="portfolio">
     <div class="container">
-        <div class="portfolio-header">
+        <div class="section-title">
             <h2>Our Web Development Portfolio</h2>
             <p>Check out some of our recent web development projects for clients across various industries.</p>
         </div>
 
         <div class="portfolio-grid">
             <div class="portfolio-item fade-in">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                     alt="Business Website">
+                <div class="portfolio-image">
+                    <i class="fas fa-building"></i>
+                </div>
                 <div class="portfolio-content">
-                    <h3>Corporate Business Site</h3>
+                    <h3>Business Website</h3>
+                    <h4>Corporate Business Site</h4>
                     <p>Responsive website for a financial services company with blog and contact forms.</p>
                 </div>
             </div>
 
             <div class="portfolio-item fade-in delay-1">
-                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                     alt="E-commerce Website">
+                <div class="portfolio-image">
+                    <i class="fas fa-store"></i>
+                </div>
                 <div class="portfolio-content">
-                    <h3>E-commerce Store</h3>
+                    <h3>E-commerce Website</h3>
+                    <h4>E-commerce Store</h4>
                     <p>Online store with product catalog, shopping cart, and payment integration.</p>
                 </div>
             </div>
 
             <div class="portfolio-item fade-in delay-2">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80"
-                     alt="Portfolio Website">
+                <div class="portfolio-image">
+                    <i class="fas fa-camera"></i>
+                </div>
                 <div class="portfolio-content">
-                    <h3>Creative Portfolio</h3>
+                    <h3>Portfolio Website</h3>
+                    <h4>Creative Portfolio</h4>
                     <p>Portfolio website for a photographer with gallery and booking system.</p>
                 </div>
             </div>
@@ -213,14 +305,12 @@
 <footer>
     <div class="container">
         <div class="footer-content">
-            <!-- First Column - About -->
             <div class="footer-column">
                 <div class="footer-logo">
                     <i class="fas fa-rocket"></i>
                     <h3>Digital SA</h3>
                 </div>
-                <p>Your comprehensive digital partner for career, technology, and business solutions in
-                    Johannesburg.</p>
+                <p>Your comprehensive digital partner for career, technology, and business solutions in Johannesburg.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/profile.php?id=61577171795135&mibextid=ZbWKwL" target="_blank"
                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -235,7 +325,6 @@
                 </div>
             </div>
 
-            <!-- Second Column - Quick Links -->
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-menu">
@@ -246,21 +335,16 @@
                 </ul>
             </div>
 
-            <!-- Third Column - Services -->
             <div class="footer-column">
                 <h3>Our Services</h3>
                 <ul class="footer-menu">
-                    <li><a href="../html/career_services.html"><i class="fas fa-chevron-right"></i> Career Branding</a>
-                    </li>
-                    <li><a href="../html/web_development.html"><i class="fas fa-chevron-right"></i> Web Development</a>
-                    </li>
-                    <li><a href="../html/business_branding.html"><i class="fas fa-chevron-right"></i> Business Branding</a>
-                    </li>
+                    <li><a href="../html/career_services.html"><i class="fas fa-chevron-right"></i> Career Branding</a></li>
+                    <li><a href="../html/web_development.html"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                    <li><a href="../html/business_branding.html"><i class="fas fa-chevron-right"></i> Business Branding</a></li>
                     <li><a href="../html/it_support.html"><i class="fas fa-chevron-right"></i> IT Support</a></li>
                 </ul>
             </div>
 
-            <!-- Fourth Column - Contact -->
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
@@ -277,6 +361,8 @@
         </div>
     </div>
 </footer>
-<script src="../js/web_dev_script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="../js/web_development_script.js"></script>
 </body>
 </html>

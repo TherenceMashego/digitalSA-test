@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="../css/it_support_styling.css">
 </head>
 <body>
-<header>
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
+<div class="cursor-trail"></div>
+
+<header id="header">
     <div class="container">
         <nav>
             <a href="../index.html" class="logo">
@@ -32,114 +36,180 @@
     </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
+    <div class="particles-container" id="particles-js"></div>
+    <div class="wave-animation"></div>
     <div class="container">
         <h1 class="fade-in">IT Support & Security Services</h1>
         <p class="fade-in delay-1">Comprehensive IT solutions to keep your technology running smoothly and securely.</p>
-        <div class="fade-in delay-2">
-            <a href="#contact" class="btn">Get Support</a>
-            <a href="../index.html#services" class="btn btn-outline">All Services</a>
+        <div class="hero-buttons fade-in delay-2">
+            <a href="#services" class="btn">Get Support</a>
+            <a href="#contact" class="btn btn-outline">All Services</a>
         </div>
     </div>
 </section>
 
-<section class="service-detail">
+<section class="stats">
     <div class="container">
-        <div class="service-header">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-count="95">0</div>
+                <div class="stat-label">Issues Resolved</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="99">0</div>
+                <div class="stat-label">Satisfaction Rate (%)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="30">0</div>
+                <div class="stat-label">Minute Response Time</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="24">0</div>
+                <div class="stat-label">Hour Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service-detail" id="services">
+    <div class="container">
+        <div class="section-title">
             <h2>Professional IT Support Solutions</h2>
-            <p>Our comprehensive IT support services ensure your technology operates efficiently and securely,
-                minimizing downtime and maximizing productivity.</p>
+            <p>Our comprehensive IT support services ensure your technology operates efficiently and securely, minimizing downtime and maximizing productivity.</p>
         </div>
 
-        <div class="service-content">
-            <div class="service-features">
-                <h3><i class="fas fa-headset"></i> Service Features</h3>
-                <ul class="feature-list">
-                    <li>Technical Troubleshooting: Remote or onsite support for hardware/software issues</li>
-                    <li>OS Installation: Windows, macOS, and Linux installation and configuration</li>
-                    <li>Security Software Installation: Antivirus, anti-malware, and firewall setup</li>
-                    <li>Domain Configuration: DNS management and domain setup</li>
-                    <li>Network Troubleshooting: WiFi, LAN, and internet connectivity issues</li>
-                    <li>VPN & Privacy Solutions: Secure remote access and privacy protection</li>
-                    <li>Data Backup Solutions: Secure backup and recovery systems</li>
-                    <li>Hardware Upgrades: Memory, storage, and component upgrades</li>
-                </ul>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Initial Consultation</h3>
+                    <ul>
+                        <li>Diagnosis of issues</li>
+                        <li>Solution planning</li>
+                        <li>Expert assessment</li>
+                        <li>Recommendations</li>
+                        <li>Cost estimation</li>
+                    </ul>
+                    <div class="price-tag">R250</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
             </div>
 
-            <div class="pricing">
-                <h3><i class="fas fa-tag"></i> Pricing & Packages</h3>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Initial Consultation</div>
-                        <div class="price-description">Diagnosis of issues and solution planning</div>
-                    </div>
-                    <div class="price-value">R250</div>
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-desktop"></i>
                 </div>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Remote Support</div>
-                        <div class="price-description">Per hour for remote troubleshooting</div>
-                    </div>
-                    <div class="price-value">R300/hour</div>
+                <div class="service-content">
+                    <h3>Remote Support</h3>
+                    <ul>
+                        <li>Remote troubleshooting</li>
+                        <li>Software installation</li>
+                        <li>System optimization</li>
+                        <li>Quick issue resolution</li>
+                        <li>Screen sharing support</li>
+                    </ul>
+                    <div class="price-tag">R300/hour</div>
+                    <a href="#contact" class="btn">Get Started</a>
                 </div>
+            </div>
 
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Onsite Support</div>
-                        <div class="price-description">Per hour for onsite assistance (min 1 hour)</div>
-                    </div>
-                    <div class="price-value">R500/hour</div>
+            <div class="service-card fade-in delay-2">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-house"></i>
                 </div>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Security Setup</div>
-                        <div class="price-description">VPN, antivirus, and firewall configuration</div>
-                    </div>
-                    <div class="price-value">R400</div>
+                <div class="service-content">
+                    <h3>Onsite Support</h3>
+                    <ul>
+                        <li>Onsite assistance</li>
+                        <li>Hardware repairs</li>
+                        <li>Network setup</li>
+                        <li>Equipment installation</li>
+                        <li>Personalized service</li>
+                    </ul>
+                    <div class="price-tag">R500/hour</div>
+                    <a href="#contact" class="btn">Get Started</a>
                 </div>
+            </div>
 
-                <div class="package">
-                    <h4><i class="fas fa-gift"></i> IT Support Package</h4>
-                    <p>5 hours of remote support + security setup + 1 month of follow-up assistance</p>
-                    <div class="package-price">R1,800</div>
-                    <a href="#contact" class="btn btn-outline">Get Package</a>
+            <div class="service-card fade-in delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Security Setup</h3>
+                    <ul>
+                        <li>VPN configuration</li>
+                        <li>Antivirus installation</li>
+                        <li>Firewall setup</li>
+                        <li>Security auditing</li>
+                        <li>Threat protection</li>
+                    </ul>
+                    <div class="price-tag">R400</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="service-content">
+                    <h3>IT Support Package</h3>
+                    <ul>
+                        <li>5 hours remote support</li>
+                        <li>Security setup included</li>
+                        <li>1 month follow-up assistance</li>
+                        <li>Priority support access</li>
+                        <li>Emergency contact</li>
+                    </ul>
+                    <div class="price-tag">R1,800</div>
+                    <div class="savings">Save R200</div>
+                    <a href="#contact" class="btn">Get Package</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="security">
+<section class="features">
     <div class="container">
-        <div class="security-header">
+        <div class="section-title">
             <h2>Security & Privacy Solutions</h2>
             <p>Protect your data and privacy with our comprehensive security solutions tailored to your needs.</p>
         </div>
 
-        <div class="security-grid">
-            <div class="security-card fade-in">
-                <i class="fas fa-shield-alt"></i>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
                 <h3>Malware Protection</h3>
                 <p>Comprehensive antivirus and anti-malware solutions to keep your systems secure from threats.</p>
             </div>
 
-            <div class="security-card fade-in delay-1">
-                <i class="fas fa-lock"></i>
+            <div class="feature-card fade-in delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
                 <h3>VPN Services</h3>
                 <p>Secure your internet connection and protect your privacy with professional VPN setup.</p>
             </div>
 
-            <div class="security-card fade-in delay-2">
-                <i class="fas fa-network-wired"></i>
+            <div class="feature-card fade-in delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
                 <h3>Network Security</h3>
                 <p>Firewall configuration and network monitoring to prevent unauthorized access.</p>
             </div>
 
-            <div class="security-card fade-in delay-3">
-                <i class="fas fa-database"></i>
+            <div class="feature-card fade-in delay-3">
+                <div class="feature-icon">
+                    <i class="fas fa-database"></i>
+                </div>
                 <h3>Data Backup</h3>
                 <p>Secure backup solutions to protect your important files from loss or corruption.</p>
             </div>
@@ -149,32 +219,44 @@
 
 <section class="process">
     <div class="container">
-        <div class="process-header">
+        <div class="section-title">
             <h2>Our IT Support Process</h2>
             <p>We follow a structured approach to ensure your IT issues are resolved efficiently and effectively.</p>
         </div>
-
+        
         <div class="process-steps">
             <div class="process-step fade-in">
-                <i class="fas fa-diagnoses"></i>
+                <div class="step-number">1</div>
+                <div class="step-icon">
+                    <i class="fas fa-search"></i>
+                </div>
                 <h3>Diagnosis</h3>
                 <p>We begin by thoroughly diagnosing your IT issues to identify the root cause.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-1">
-                <i class="fas fa-solution"></i>
+                <div class="step-number">2</div>
+                <div class="step-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
                 <h3>Solution Planning</h3>
                 <p>We develop a customized solution plan tailored to your specific needs and budget.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-2">
-                <i class="fas fa-tools"></i>
+                <div class="step-number">3</div>
+                <div class="step-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
                 <h3>Implementation</h3>
                 <p>Our technicians implement the solution with minimal disruption to your workflow.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-3">
-                <i class="fas fa-check-circle"></i>
+                <div class="step-number">4</div>
+                <div class="step-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
                 <h3>Testing & Verification</h3>
                 <p>We thoroughly test the solution to ensure it works correctly and meets your requirements.</p>
             </div>
@@ -194,7 +276,7 @@
             <a href="tel:+27829699191" class="btn btn-outline">
                 <i class="fas fa-phone"></i> +27 82 969 9191
             </a>
-            <a href="https://wa.me/+27685753002" class="btn btn-whatsapp">
+            <a href="https://wa.me/+27685753002" class="btn btn-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i> WhatsApp Us
             </a>
         </div>
@@ -204,14 +286,12 @@
 <footer>
     <div class="container">
         <div class="footer-content">
-            <!-- First Column - About -->
             <div class="footer-column">
                 <div class="footer-logo">
                     <i class="fas fa-rocket"></i>
                     <h3>Digital SA</h3>
                 </div>
-                <p>Your comprehensive digital partner for career, technology, and business solutions in
-                    Johannesburg.</p>
+                <p>Your comprehensive digital partner for career, technology, and business solutions in Johannesburg.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/profile.php?id=61577171795135&mibextid=ZbWKwL" target="_blank"
                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -226,7 +306,6 @@
                 </div>
             </div>
 
-            <!-- Second Column - Quick Links -->
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-menu">
@@ -237,21 +316,16 @@
                 </ul>
             </div>
 
-            <!-- Third Column - Services -->
             <div class="footer-column">
                 <h3>Our Services</h3>
                 <ul class="footer-menu">
-                    <li><a href="../html/career_services.html"><i class="fas fa-chevron-right"></i> Career Branding</a>
-                    </li>
-                    <li><a href="../html/web_development.html"><i class="fas fa-chevron-right"></i> Web Development</a>
-                    </li>
-                    <li><a href="../html/business_branding.html"><i class="fas fa-chevron-right"></i> Business Branding</a>
-                    </li>
+                    <li><a href="../html/career_services.html"><i class="fas fa-chevron-right"></i> Career Branding</a></li>
+                    <li><a href="../html/web_development.html"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                    <li><a href="../html/business_branding.html"><i class="fas fa-chevron-right"></i> Business Branding</a></li>
                     <li><a href="../html/it_support.html"><i class="fas fa-chevron-right"></i> IT Support</a></li>
                 </ul>
             </div>
 
-            <!-- Fourth Column - Contact -->
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
@@ -268,6 +342,8 @@
         </div>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="../js/it_support_script.js"></script>
 </body>
 </html>

@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="../css/business_branding_styling.css">
 </head>
 <body>
-<header>
+<div class="cursor-dot" data-cursor-dot></div>
+<div class="cursor-outline" data-cursor-outline></div>
+<div class="cursor-trail"></div>
+
+<header id="header">
     <div class="container">
         <nav>
             <a href="../index.html" class="logo">
@@ -32,114 +36,193 @@
     </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="home">
+    <div class="particles-container" id="particles-js"></div>
+    <div class="wave-animation"></div>
     <div class="container">
         <h1 class="fade-in">Business Branding Services</h1>
-        <p class="fade-in delay-1">Create a memorable brand identity that resonates with your audience and sets you
-            apart from the competition.</p>
-        <div class="fade-in delay-2">
-            <a href="#contact" class="btn">Get Started</a>
-            <a href="../index.html#services" class="btn btn-outline">All Services</a>
+        <p class="fade-in delay-1">Create a memorable brand identity that resonates with your audience and sets you apart from the competition.</p>
+        <div class="hero-buttons fade-in delay-2">
+            <a href="#services" class="btn">View Services</a>
+            <a href="#contact" class="btn btn-outline">Get Started</a>
         </div>
     </div>
 </section>
 
-<section class="service-detail">
+<section class="stats">
     <div class="container">
-        <div class="service-header">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-label">Brands Created</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="98">0</div>
+                <div class="stat-label">Client Satisfaction (%)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="30">0</div>
+                <div class="stat-label">Logo Designs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-count="48">0</div>
+                <div class="stat-label">Hour Turnaround</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service-detail" id="services">
+    <div class="container">
+        <div class="section-title">
             <h2>Build a Powerful Brand Identity</h2>
-            <p>Our comprehensive branding services help businesses establish a strong visual identity that communicates
-                their values and resonates with their target audience.</p>
+            <p>Our comprehensive branding services help businesses establish a strong visual identity that communicates their values and resonates with their target audience.</p>
         </div>
 
-        <div class="service-content">
-            <div class="service-features">
-                <h3><i class="fas fa-palette"></i> Service Features</h3>
-                <ul class="feature-list">
-                    <li>Logo Design: Modern, versatile logo concepts created using Figma/Canva</li>
-                    <li>Business Card Design: Cohesive design matching brand identity</li>
-                    <li>Brand Style Guide: Comprehensive guidelines for consistent branding</li>
-                    <li>Social Media Branding: Custom graphics for all social media platforms</li>
-                    <li>Marketing Materials: Brochures, flyers, and promotional materials</li>
-                    <li>Brand Strategy: Development of brand voice, messaging, and positioning</li>
-                </ul>
-            </div>
-
-            <div class="pricing">
-                <h3><i class="fas fa-tag"></i> Pricing & Packages</h3>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Logo Design</div>
-                        <div class="price-description">3 initial concepts with 2 rounds of revisions</div>
-                    </div>
-                    <div class="price-value">R300 - R800</div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
                 </div>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Business Card Design</div>
-                        <div class="price-description">Front and back design with print-ready files</div>
-                    </div>
-                    <div class="price-value">R200</div>
-                </div>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Brand Style Guide</div>
-                        <div class="price-description">Complete branding guidelines document</div>
-                    </div>
-                    <div class="price-value">R500</div>
-                </div>
-
-                <div class="price-item">
-                    <div>
-                        <div class="price-name">Social Media Kit</div>
-                        <div class="price-description">Cover images, post templates, and story designs</div>
-                    </div>
-                    <div class="price-value">R400</div>
-                </div>
-
-                <div class="package">
-                    <h4><i class="fas fa-gift"></i> Comprehensive Branding Package</h4>
-                    <p>Logo + Business Cards + Style Guide + Social Media Kit</p>
-                    <div class="package-price">R1,200</div>
-                    <a href="#contact" class="btn btn-outline">Get Package</a>
+                <div class="service-content">
+                    <h3>Logo Design</h3>
+                    <ul>
+                        <li>Modern, versatile logo concepts</li>
+                        <li>Created using Figma/Canva</li>
+                        <li>3 initial concepts</li>
+                        <li>2 rounds of revisions</li>
+                        <li>Multiple file formats</li>
+                    </ul>
+                    <div class="price-tag">R300 - R800</div>
+                    <a href="#contact" class="btn">Get Started</a>
                 </div>
             </div>
+
+            <div class="service-card fade-in delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Business Card Design</h3>
+                    <ul>
+                        <li>Cohesive design matching brand</li>
+                        <li>Front and back design</li>
+                        <li>Print-ready files</li>
+                        <li>Multiple format delivery</li>
+                        <li>Quick turnaround</li>
+                    </ul>
+                    <div class="price-tag">R200</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in delay-2">
+                <div class="service-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Brand Style Guide</h3>
+                    <ul>
+                        <li>Complete branding guidelines</li>
+                        <li>Color palette specifications</li>
+                        <li>Typography guidelines</li>
+                        <li>Logo usage rules</li>
+                        <li>Brand voice documentation</li>
+                    </ul>
+                    <div class="price-tag">R500</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-card fade-in delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Social Media Kit</h3>
+                    <ul>
+                        <li>Custom cover images</li>
+                        <li>Post templates</li>
+                        <li>Story designs</li>
+                        <li>Platform-specific sizing</li>
+                        <li>Branded content creation</li>
+                    </ul>
+                    <div class="price-tag">R400</div>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="service-card fade-in delay-3">
+                <div class="service-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Comprehensive Branding Package</h3>
+                    <ul>
+                        <li>Logo Design</li>
+                        <li>Business Cards</li>
+                        <li>Style Guide</li>
+                        <li>Social Media Kit</li>
+                        <li>Priority Support</li>
+                    </ul>
+                    <div class="price-tag">R1,200</div>
+                    <div class="savings">Save R200</div>
+                    <a href="#contact" class="btn">Get Package</a>
+                </div>
+            </div>
+
+        
+
         </div>
+
     </div>
 </section>
 
 <section class="process">
     <div class="container">
-        <div class="process-header">
+        <div class="section-title">
             <h2>Our Branding Process</h2>
-            <p>We follow a structured approach to ensure your brand identity accurately represents your business and
-                resonates with your target audience.</p>
+            <p>We follow a structured approach to ensure your brand identity accurately represents your business and resonates with your target audience.</p>
         </div>
-
+        
         <div class="process-steps">
             <div class="process-step fade-in">
-                <i class="fas fa-comments"></i>
+                <div class="step-number">1</div>
+                <div class="step-icon">
+                    <i class="fas fa-search"></i>
+                </div>
                 <h3>Discovery</h3>
                 <p>We begin by understanding your business, target audience, and competition.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-1">
-                <i class="fas fa-pencil-ruler"></i>
+                <div class="step-number">2</div>
+                <div class="step-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
                 <h3>Concept Development</h3>
                 <p>We create initial design concepts based on our discovery phase.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-2">
-                <i class="fas fa-drafting-compass"></i>
+                <div class="step-number">3</div>
+                <div class="step-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
                 <h3>Design Refinement</h3>
                 <p>We refine the chosen concept based on your feedback.</p>
             </div>
-
+            
             <div class="process-step fade-in delay-3">
-                <i class="fas fa-file-export"></i>
+                <div class="step-number">4</div>
+                <div class="step-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
                 <h3>Delivery</h3>
                 <p>We deliver all final files and brand guidelines for consistent usage.</p>
             </div>
@@ -149,37 +232,39 @@
 
 <section class="portfolio">
     <div class="container">
-        <div class="portfolio-header">
+        <div class="section-title">
             <h2>Branding Portfolio</h2>
             <p>Check out some of our recent branding projects for clients across various industries.</p>
         </div>
-
+        
         <div class="portfolio-grid">
             <div class="portfolio-item fade-in">
-                <img src="https://images.unsplash.com/photo-1567446537738-74804ee3a9bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-                     alt="Tech Company Branding">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Tech Company Branding">
+                </div>
                 <div class="portfolio-content">
                     <h3>Tech Startup Branding</h3>
                     <p>Complete branding for a SaaS company including logo, style guide, and marketing materials.</p>
                 </div>
             </div>
-
+            
             <div class="portfolio-item fade-in delay-1">
-                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                     alt="Restaurant Branding">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Restaurant Branding">
+                </div>
                 <div class="portfolio-content">
                     <h3>Restaurant Identity</h3>
                     <p>Complete branding package for a fine dining restaurant including menu design.</p>
                 </div>
             </div>
-
+            
             <div class="portfolio-item fade-in delay-2">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80"
-                     alt="Consulting Firm Branding">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1551836026-d5c55ac0fabc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Consulting Firm Branding">
+                </div>
                 <div class="portfolio-content">
                     <h3>Consulting Firm Branding</h3>
-                    <p>Professional branding for a financial consulting firm including business cards and
-                        stationery.</p>
+                    <p>Professional branding for a financial consulting firm including business cards and stationery.</p>
                 </div>
             </div>
         </div>
@@ -208,14 +293,12 @@
 <footer>
     <div class="container">
         <div class="footer-content">
-            <!-- First Column - About -->
             <div class="footer-column">
                 <div class="footer-logo">
                     <i class="fas fa-rocket"></i>
                     <h3>Digital SA</h3>
                 </div>
-                <p>Your comprehensive digital partner for career, technology, and business solutions in
-                    Johannesburg.</p>
+                <p>Your comprehensive digital partner for career, technology, and business solutions in Johannesburg.</p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/profile.php?id=61577171795135&mibextid=ZbWKwL" target="_blank"
                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -230,7 +313,6 @@
                 </div>
             </div>
 
-            <!-- Second Column - Quick Links -->
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-menu">
@@ -241,21 +323,16 @@
                 </ul>
             </div>
 
-            <!-- Third Column - Services -->
             <div class="footer-column">
                 <h3>Our Services</h3>
                 <ul class="footer-menu">
-                    <li><a href="../html/career_services.html"><i class="fas fa-chevron-right"></i> Career Branding</a>
-                    </li>
-                    <li><a href="../html/web_development.html"><i class="fas fa-chevron-right"></i> Web Development</a>
-                    </li>
-                    <li><a href="../html/business_branding.html"><i class="fas fa-chevron-right"></i> Business Branding</a>
-                    </li>
+                    <li><a href="../html/career_services.html"><i class="fas fa-chevron-right"></i> Career Branding</a></li>
+                    <li><a href="../html/web_development.html"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                    <li><a href="../html/business_branding.html"><i class="fas fa-chevron-right"></i> Business Branding</a></li>
                     <li><a href="../html/it_support.html"><i class="fas fa-chevron-right"></i> IT Support</a></li>
                 </ul>
             </div>
 
-            <!-- Fourth Column - Contact -->
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
@@ -272,6 +349,8 @@
         </div>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="../js/business_branding_script.js"></script>
 </body>
 </html>
